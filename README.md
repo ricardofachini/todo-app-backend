@@ -3,4 +3,4 @@
 ##
 ### Backend em django para projeto do app de tarefas
 - Django
-- Django Rest Framework
+- Django Ninja
