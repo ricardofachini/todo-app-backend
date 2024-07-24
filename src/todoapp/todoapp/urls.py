@@ -15,17 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ninja import NinjaAPI
-
-api = NinjaAPI()
-
-#rota de teste
-@api.get("/add")
-def add(request, a: int, b: int):
-    return {"result:": a+b}
+from .api import api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include("users.urls")),
-    path("api/", api.urls)
+    path('api/', api.urls),
+    #path('api/', include("todoapp.api.urls")),
 ]
