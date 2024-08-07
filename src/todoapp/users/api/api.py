@@ -1,5 +1,5 @@
 from ninja import Router, Schema
-from .models import User
+from ..models import User
 
 router = Router()
 

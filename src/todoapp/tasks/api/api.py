@@ -1,6 +1,6 @@
 from ninja import Router
 
-from .models import Task
+from ..models import Task
 
 
 router = Router()
