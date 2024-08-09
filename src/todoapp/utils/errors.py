@@ -1,0 +1,4 @@
+
+
+class ServiceUnavailableError(Exception):
+    pass
