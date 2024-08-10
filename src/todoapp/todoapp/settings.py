@@ -28,7 +28,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+APP_NAME = os.environ.get("FLY_APP_NAME")
+ALLOWED_HOSTS = ['localhost', '10.0.2.2', f"{APP_NAME}.fly.dev"]
 
 
 # Application definition

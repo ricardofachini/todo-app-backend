@@ -16,19 +16,17 @@ def list_all_tasks(request):
     task_list = Task.objects.all()
     return task_list
 
+# ↓ retorna uma tarefa em específico
 @router.get("/{task_id}", response=TaskResponseEntity)
 def get_task(request, task_id: int):
     task = get_object_or_404(Task, id=task_id)
     return task
 
 
-@router.post("/add")
+@router.post("/", response=TaskResponseEntity)
 def create_task(request, payload: TaskRequestEntity):
     """
     Endpoint para criar uma task no banco
     """
     task = Task.objects.create(**payload.dict())
-    #try:
-    return {"id: ", task.id}
-    # except:
-    #     raise ServiceUnavailableError
+    return task
