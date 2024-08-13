@@ -4,6 +4,7 @@ Django==5.0.7
 django-ninja==1.2.2
 gunicorn==22.0.0
 packaging==24.1
+pillow==10.4.0
 pydantic==2.8.2
 pydantic_core==2.20.1
 python-dotenv==0.19.2
