@@ -56,6 +56,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Authentication settings
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+# Django Ninja settings for authentication
+NINJA_API = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'ninja.security.AuthBearer',
+    ],
+}
+
 ROOT_URLCONF = 'todoapp.urls'
 
 TEMPLATES = [

@@ -1,0 +1,65 @@
+<!-- templates/registration/signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <h1>Signup</h1>
+
+    {% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    {% if success_message %}
+    <p style="color: green;">{{ success_message }}</p>
+    {% endif %}
+
+    <form id="signupForm" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="bio">Bio:</label><br>
+        <textarea id="bio" name="bio"></textarea><br><br>
+
+        <label for="image">Profile Image:</label><br>
+        <input type="file" id="image" name="image"><br><br>
+
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <script>
+    document.getElementById('signupForm').onsubmit = async function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+
+        const response = await fetch("/api/auth/signup", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+            },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Signup successful!");
+            window.location.href = '/accounts/login/'; // Redirect to login page or wherever you want
+        } else {
+            alert(data.detail || 'Signup failed');
+        }
+    };
+    </script>
+</body>
+</html>
