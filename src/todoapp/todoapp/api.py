@@ -4,7 +4,7 @@ from utils import ServiceUnavailableError
 api = NinjaAPI(title="Documentação Todo app")
 
 api.add_router("/tasks/", "tasks.api.router")
-api.add_router("/profiles/", "profiles.api.router")
+api.add_router("/auth/", "auth.api.router")
 
 @api.exception_handler(ServiceUnavailableError)
 def service_unavailable(request, excp):

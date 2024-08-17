@@ -2,7 +2,10 @@ annotated-types==0.7.0
 asgiref==3.8.1
 Django==5.0.7
 django-ninja==1.2.2
+dnspython==2.6.1
+email_validator==2.2.0
 gunicorn==22.0.0
+idna==3.7
 packaging==24.1
 pillow==10.4.0
 pydantic==2.8.2
