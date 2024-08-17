@@ -1,14 +1,16 @@
 from ninja import Router
+
 from typing import List
 from utils import ServiceUnavailableError
 
 from django.shortcuts import get_object_or_404
 
+from .security import Auth
 from ..models import Task
 from .entity import TaskRequestEntity, TaskResponseEntity
 
 
-router = Router()
+router = Router(auth=Auth())
 
 
 @router.get("/list", response=List[TaskResponseEntity])
