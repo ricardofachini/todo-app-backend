@@ -1,7 +1,14 @@
 from ninja import NinjaAPI
+from ninja.security import HttpBearer
+
 from utils import ServiceUnavailableError
 
-api = NinjaAPI(title="Documentação Todo app")
+class GlobalAuth(HttpBearer):
+    def authenticate(self, request, token):
+        if token == "supersecret":
+            return token
+
+api = NinjaAPI(title="Documentação Todo app", auth = GlobalAuth())
 
 api.add_router("/tasks/", "tasks.api.router")
 api.add_router("/auth/", "auth.api.router")
