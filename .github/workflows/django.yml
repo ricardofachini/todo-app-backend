@@ -27,4 +27,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python /src/todoapp/manage.py test
+        python ./src/todoapp/manage.py test
